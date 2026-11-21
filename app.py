@@ -46,13 +46,13 @@ header_col, btn_col = st.columns([5, 2], vertical_alignment="center")
 with header_col:
     st.title("MacroSnap 🥗")
 
-# with button_col:
-#     send_disabled = len(st.session_state.messages) <= 2
-#     if st.button("📤 Send to WhatsApp", disabled=send_disabled, use_container_width=True):
-#         with st.spinner("Summarizing your day..."):
-#             summary = ask_gemini([SUMMARY_REQUEST_PROMPT])
-#         success, info = send_whatsapp(st.session_state.whatsapp_number, st.session_state.name, summary)
-#         if success:
-#             st.success("Sent! Check your WhatsApp 📲")
-#         else:
-#             st.error(f"Couldn't send that: {info}")
+with button_col:
+    send_disabled = len(st.session_state.messages) <= 2
+    if st.button("📤 Send to WhatsApp", disabled=send_disabled, use_container_width=True):
+        with st.spinner("Summarizing your day..."):
+            summary = ask_gemini([SUMMARY_REQUEST_PROMPT])
+        success, info = send_whatsapp(st.session_state.whatsapp_number, st.session_state.name, summary)
+        if success:
+            st.success("Sent! Check your WhatsApp 📲")
+        else:
+            st.error(f"Couldn't send that: {info}")
